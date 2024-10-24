@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SafeInput {
     public static String getNonZeroLenString(Scanner pipe, String prompt) {
@@ -55,10 +57,12 @@ public class SafeInput {
         do{
             System.out.print("\n" +prompt + ": ");
             if(pipe.hasNextInt()){
-                retInt = pipe.nextInt();
+                int Floatret;
+                Floatret = pipe.nextInt();
                 pipe.nextLine();
-                if (retInt >= low && retInt <= high){
+                if (Floatret >= low && Floatret <= high){
                     Valid = true;
+                    retInt = Floatret;
                 }
                 else{
                     System.out.println("Invalid input, please enter a value within the range");
@@ -125,5 +129,25 @@ public class SafeInput {
             }
         }while(!Valid);
         return retBool;
+    }
+    public static String getRegExString(Scanner pipe, String prompt, String regex){
+        String retString = "";
+        String intput = "";
+        Boolean Valid = false;
+        Pattern pattern = Pattern.compile(regex);
+        do{
+            System.out.print("\n" +prompt + ": ");
+            intput = pipe.nextLine();
+            Matcher matcher = pattern.matcher(intput);
+            if(matcher.find()){
+                Valid = true;
+                retString = intput;
+            }
+            else{
+                System.out.println("Invalid input, please enter a valid value");
+            }
+
+        }while(!Valid);
+        return retString;
     }
 }

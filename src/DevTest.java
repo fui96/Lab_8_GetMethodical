@@ -35,10 +35,18 @@ public class DevTest {
         within = SafeInput.getRangedDouble(in,"Please enter a decimal between 0 and 1", 0,1);
         System.out.println("The decimal you chose is " + within);
     }*/
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         Boolean Cont = null;
         Cont = SafeInput.getYNConfirm(in, "Would you like to continue? [y/n]");
         System.out.println("You have chosen continue "+ Cont);
+    }*/
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String PhoneNumber = "";
+        PhoneNumber = SafeInput.getRegExString(in,"Please enter a phone number","^\\d{3}-\\d{3}-\\d{4}");
+        System.out.println("the phone number is: " + PhoneNumber);
+
+
     }
 }
