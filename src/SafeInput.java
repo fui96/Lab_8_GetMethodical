@@ -105,7 +105,7 @@ public class SafeInput {
     public static Boolean getYNConfirm(Scanner pipe, String prompt){
         Boolean retBool = null;
         String FloatRet;
-        Boolean Valid = false;
+        boolean Valid = false;
         do{
             System.out.print("\n" +prompt + ": ");
             if(pipe.hasNext()){
@@ -141,7 +141,7 @@ public class SafeInput {
             Matcher matcher = pattern.matcher(intput);
             if(matcher.find()){
                 Valid = true;
-                retString = intput;
+                retString = matcher.group();
             }
             else{
                 System.out.println("Invalid input, please enter a valid value");
@@ -149,5 +149,34 @@ public class SafeInput {
 
         }while(!Valid);
         return retString;
+    }
+    public static void prettyHeader(String msg){
+        msg.trim();
+        int CenterWidth = msg.length();
+        int TotalWidth = 60;
+        int SideStars = 3;
+        int LeftPadding = (57 - CenterWidth) / 2;
+        int RightPadding = TotalWidth -((SideStars * 2) + LeftPadding + CenterWidth) ;
+        for( int x = 0 ; x <= TotalWidth; x++){
+            System.out.print("*");
+        }
+        System.out.println();
+        for(int x = 0; x < SideStars; x++){
+            System.out.print("*");
+        }
+        for(int x = 0; x < LeftPadding; x++){
+            System.out.print(" ");
+        }
+        System.out.print(msg);
+        for(int x = 0; x <= RightPadding; x++){
+            System.out.print(" ");
+        }
+        for(int x = 0; x < SideStars; x++){
+            System.out.print("*");
+        }
+        System.out.println();
+        for(int x = 0; x <= TotalWidth; x++){
+            System.out.print("*");
+        }
     }
 }
