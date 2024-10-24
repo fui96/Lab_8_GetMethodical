@@ -155,8 +155,7 @@ public class SafeInput {
         int CenterWidth = msg.length();
         int TotalWidth = 60;
         int SideStars = 3;
-        int LeftPadding = (57 - CenterWidth) / 2;
-        int RightPadding = TotalWidth -((SideStars * 2) + LeftPadding + CenterWidth) ;
+        int Padding = (TotalWidth -((SideStars*2) + CenterWidth)) /2 ;
         for( int x = 0 ; x <= TotalWidth; x++){
             System.out.print("*");
         }
@@ -164,11 +163,11 @@ public class SafeInput {
         for(int x = 0; x < SideStars; x++){
             System.out.print("*");
         }
-        for(int x = 0; x < LeftPadding; x++){
+        for(int x = 0; x <= Padding; x++){
             System.out.print(" ");
         }
         System.out.print(msg);
-        for(int x = 0; x <= RightPadding; x++){
+        for(int x = 0; x <= Padding; x++){
             System.out.print(" ");
         }
         for(int x = 0; x < SideStars; x++){
